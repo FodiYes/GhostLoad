@@ -1,0 +1,70 @@
+cargo-features = []
+
+[package]
+name = "loader"
+version = "2.0.0"
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+tokio = { version = "1.37", features = ["full"] }
+reqwest = { version = "0.12", features = ["json", "rustls-tls", "stream"], default-features = false }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+sysinfo = "0.30"
+sha2 = "0.10"
+rand = "0.8"
+aes = "0.8"
+cbc = "0.1"
+base64 = "0.22"
+dirs = "5.0"
+hex = "0.4"
+lazy_static = "1.4"
+obfstr = "0.4"
+hmac = "0.12"
+flate2 = "1.0"
+regex = "1.10"
+aes-gcm = "0.10"
+hkdf = "0.12"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_System_Threading",
+    "Win32_System_Memory",
+    "Win32_System_SystemInformation",
+    "Win32_Security",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_System_ProcessStatus",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_System_Registry",
+    "Win32_System_Environment",
+    "Win32_System_Pipes",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Diagnostics_Debug",
+] }
+winapi = { version = "0.3.9", features = [
+    "iphlpapi", "winerror", "memoryapi", "sysinfoapi", "winbase",
+    "winreg", "shellapi", "winuser", "securitybaseapi", "processthreadsapi",
+    "winnt", "handleapi", "minwindef", "tlhelp32", "debugapi", "errhandlingapi",
+    "synchapi"
+] }
+
+[build-dependencies]
+toml = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+rand = "0.8"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+debug = false
+split-debuginfo = "off"
+
+[profile.release.package."*"]
+opt-level = "z"
+strip = true

@@ -1,0 +1,55 @@
+# ===== Rust build =====
+/loader/target/
+/loader/Cargo.lock
+**/*.rs.bk
+
+# ===== Секреты и конфиги с credentials =====
+/backend/config/.env
+/configs/deployment.toml
+
+# ===== Зашифрованные и оригинальные payload-файлы =====
+/tools/*.enc
+/tools/*.exe
+/tools/*.dll
+/tools/*.bin
+
+# ===== Логи и база бэкенда =====
+/backend/logs/*.log
+/backend/logs/
+/backend/data/
+
+# ===== Архивы =====
+/backend/backend.zip
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# ===== Личные файлы =====
+corial_style.txt
+eni_launcher.bat
+eni_lime.txt
+
+# ===== Пост для форума =====
+zelenka_post.txt
+
+# ===== Claude =====
+/.claude/
+/.claude/settings.local.json
+
+# ===== OS мусор =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== IDE =====
+.vscode/
+.idea/
+*.iml
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
